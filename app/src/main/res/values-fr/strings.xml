@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="password">mot de passe</string>
+    <string name="company_logo">Logo d\'entreprise</string>
+    <string name="loginbtn">identifier</string>
+    <string name="new_account">Vous n\'avez pas de compte? Créer un nouveau</string>
+    <string name="name">prénom</string>
+    <string name="age">Âge</string>
+    <string name="Email">adresse e-mail</string>
+    <string name="existing">Vous avez déjà un compte? Se connecter</string>
+    <string name="registbtn">enregistrement</string>
+    <string name="welcome">Bienvenue</string>
+</resources>

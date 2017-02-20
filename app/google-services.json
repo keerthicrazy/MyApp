@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "461543473872",
+    "firebase_url": "https://myapp-f77c7.firebaseio.com",
+    "project_id": "myapp-f77c7",
+    "storage_bucket": "myapp-f77c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461543473872:android:7ab7f1d926887365",
+        "android_client_info": {
+          "package_name": "com.contus.keerthi.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "461543473872-n33kfsl5dfh30hs9l7f7hv9he7ameqsl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.contus.keerthi.myapp",
+            "certificate_hash": "EDD5EB834E02F52F9CA27A6E85D459879745B000"
+          }
+        },
+        {
+          "client_id": "461543473872-q7ocpaqqm0rc6rh453c5m1do05kah98r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQuDgxiDA1H5JKxByZGTYro9qHvChF9Zo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "461543473872-q7ocpaqqm0rc6rh453c5m1do05kah98r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

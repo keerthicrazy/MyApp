@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="username">User Name</string>
+    <string name="password">Password</string>
+    <string name="company_logo">Company Logo</string>
+    <string name="loginbtn">Login</string>
+    <string name="new_account">Not Having Account ? Create New</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="Email">Email</string>
+    <string name="existing">Already Having Account ? Sign IN</string>
+    <string name="registbtn">Registration</string>
+    <string name="welcome">Welcome</string>
+    <string name="fileOp">File Operation</string>
+    <string name="readfile">Read File</string>
+    <string name="logout">Logout</string>
+
+    <string name="lang">Change Language</string>
+    <string name="ch_lang">Choose Language . . .</string>
+    <string name="lang_tamil">ta</string>
+    <string name="lang_english">en</string>
+    <string name="lang_arabic">ar</string>
+    <string name="lang_french">fr</string>
+
+
+</resources>
