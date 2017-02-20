@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/gallery"
+            android:icon="@drawable/image_multiple"
+            android:title="Gallery"/>
+        <item
+            android:id="@+id/news"
+            android:icon="@drawable/newspaper"
+            android:title="News"/>
+        <item
+            android:id="@+id/movies"
+            android:icon="@drawable/film"
+            android:title="Movies"/>
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Logout"/>
+    </group>
+</menu>
