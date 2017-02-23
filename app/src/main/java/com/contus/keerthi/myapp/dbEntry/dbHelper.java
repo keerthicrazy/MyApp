@@ -5,90 +5,119 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.contus.keerthi.myapp.Contract.Employee;
-import com.contus.keerthi.myapp.POJO.emp;
+import android.util.Log;
 
+import com.contus.keerthi.myapp.Contract.MyApp;
+import com.contus.keerthi.myapp.POJO.News;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
-import static com.contus.keerthi.myapp.R.string.username;
+
 
 /**
- * Created by user on 10/2/17.
+ * Created by user on 22/2/17.
  */
 
 public class dbHelper extends SQLiteOpenHelper {
 
-
-    public dbHelper(Context context, String db_name,  int db_version) {
-        super(context, db_name, null, db_version);
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+Employee.regEntry.TABLE_NAME);
+    private final static String TAG = "dbHelper";
+    public dbHelper(Context context,String db_name,int db_version)
+    {
+        super(context,db_name,null,db_version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String tblname=Employee.regEntry.TABLE_NAME;
+        String news_table_query = "CREATE TABLE IF NOT EXISTS "+ MyApp.news.TABLE_NAME+" ( "+
+                MyApp.news.COLUMN_NAME_SOURCE + " TEXT,"+MyApp.news.COLUMN_NAME_TITLE+" TEXT,"+
+                MyApp.news.COLUMN_NAME_AUTHOR + " TEXT,"+MyApp.news.COLUMN_NAME_URL+" TEXT,"+
+                MyApp.news.COLUMN_NAME_IMAGE_URL+ " TEXT," + MyApp.news.COLUMN_NAME_DES +" TEXT, "
+                + MyApp.news.COLUMN_NAME_PUBLISHEDAT+" DATETIME );";
 
-        String username= Employee.regEntry.COLUMN_NAME_USERNAME;
-        String age=Employee.regEntry.COLUMN_NAME_AGE;
-        String email=Employee.regEntry.COLUMN_NAME_EMAIL;
-        String password=Employee.regEntry.COLUMN_NAME_password;
-
-        String employee_details_table="CREATE TABLE " + tblname + "("
-                +username+" TEXT,"+age+" INTEGER,"+email+" TEXT,"
-                +password+" TEXT "+ ")";
-
-        db.execSQL(employee_details_table);
+        db.execSQL(news_table_query);
     }
 
-    public Boolean addEmployee(emp employee)
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS "+MyApp.news.TABLE_NAME);
+    }
+
+    public boolean insertNewsRow(News news)
     {
-        SQLiteDatabase db=this.getWritableDatabase();
-        ContentValues values=new ContentValues();
-        values.put(Employee.regEntry.COLUMN_NAME_USERNAME,employee.getUsername());
-        values.put(Employee.regEntry.COLUMN_NAME_AGE,employee.getAge());
-        values.put(Employee.regEntry.COLUMN_NAME_EMAIL,employee.getEmail());
-        values.put(Employee.regEntry.COLUMN_NAME_password,employee.getPassword());
-        long n=db.insert(Employee.regEntry.TABLE_NAME,null,values);
-        db.close();
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(MyApp.news.COLUMN_NAME_SOURCE,news.getSource());
+        values.put(MyApp.news.COLUMN_NAME_TITLE,news.getTitle());
+        values.put(MyApp.news.COLUMN_NAME_DES,news.getDes());
+        values.put(MyApp.news.COLUMN_NAME_AUTHOR,news.getAuthor());
+        values.put(MyApp.news.COLUMN_NAME_URL,news.getUrl());
+        values.put(MyApp.news.COLUMN_NAME_IMAGE_URL,news.getImage_url());
+        values.put(MyApp.news.COLUMN_NAME_PUBLISHEDAT, news.getDate());
+        long n = sqLiteDatabase.insert(MyApp.news.TABLE_NAME,null,values);
+        sqLiteDatabase.close();
         return n>0;
     }
 
-    public String login(String email, String password)
-    {
-        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor = db.query(Employee.regEntry.TABLE_NAME,new String[]
-                {Employee.regEntry.COLUMN_NAME_USERNAME},Employee.regEntry.COLUMN_NAME_EMAIL + "=? " +
-                " AND " +Employee.regEntry.COLUMN_NAME_password + "=?",new String[]{String.valueOf(email),String.valueOf(password)},null,null,null,null);
+    public ArrayList<News> getNews(){
 
-        if(cursor != null)
-        {
-            cursor.moveToFirst();
-            return cursor.getString(0);
-        }else{
-            return "login_failed";
+        Date To = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE,-3);
+        Date From = cal.getTime();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<News> newsList = null;
+        Cursor cursor = null;
+        try {
+            newsList = new ArrayList<News>();
+
+            Log.i(TAG, "getNews: before raw query ");
+            
+            String selectQuery = "SELECT * FROM "+MyApp.news.TABLE_NAME;
+
+            Log.i(TAG, "getNews: query"+selectQuery);
+            cursor = db.rawQuery(selectQuery,null);
+            Log.i(TAG, "getNews: after raw query");
+            if(cursor.moveToFirst())
+            {
+                do{
+                    News news= new News();
+                    news.setSource(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_SOURCE)));
+                    news.setAuthor(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_AUTHOR)));
+                    news.setTitle(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_TITLE)));
+                    news.setDes(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_DES)));
+                    news.setUrl(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_URL)));
+                    news.setImage_url(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_IMAGE_URL)));
+                    news.setDate(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_PUBLISHEDAT)));
+                    newsList.add(news);
+                }while(cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            cursor.close();
+            db.close();
         }
+
+        return newsList;
     }
 
-    public List<emp> getAllEmployee(){
-
-        List<emp> employeeList= new ArrayList<emp>();
-        String selectQuery = "SELECT * FROM "+Employee.regEntry.TABLE_NAME;
+    public int getCount(String query){
         SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery(selectQuery,null);
-        if(cursor.moveToFirst()){
-            do{
-                emp emp=new emp(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
-                employeeList.add(emp);
-            }while (cursor.moveToNext());
+        try {
+            Cursor cursor=db.rawQuery(query,null);
+            return cursor.getCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }finally {
+            db.close();
         }
-        return employeeList;
     }
-
 }

@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,11 +21,12 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".Registration" />
-        <activity android:name=".HomeActivity"
-            android:theme="@style/noactionbar"/>
-        <activity android:name=".Language" />
         <activity android:name=".fileOperation" />
-        <activity android:name=".ReadFile"></activity>
+        <activity android:name=".ReadFile" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

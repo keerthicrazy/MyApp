@@ -13,9 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.contus.keerthi.myapp.Contract.Employee;
-import com.contus.keerthi.myapp.POJO.emp;
-import com.contus.keerthi.myapp.dbEntry.dbHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -76,8 +73,6 @@ public class Registration extends AppCompatActivity {
                                         progressDialog.dismiss();
                                }
                            });
-
-
                }
            });
 
@@ -96,9 +91,3 @@ public class Registration extends AppCompatActivity {
     }
 }
 
-
-// Saving Data in local db
-/*emp e=new emp(name.getText().toString(),age.getText().toString(),username.getText().toString(),password.getText().toString());
-        dbHelper dbHelper= new dbHelper(Registration.this, Employee.DB_NAME,Employee.DATABASE_VERSION);
-        if(dbHelper.addEmployee(e))
-             */

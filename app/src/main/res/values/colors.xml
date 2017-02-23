@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
+
+    <color name="popupBk">#DC3424</color>
+    <color name="black">#ff000000</color>
+    <color name="list">#359DCF</color>
+    <color name="title">#222222</color>
 </resources>

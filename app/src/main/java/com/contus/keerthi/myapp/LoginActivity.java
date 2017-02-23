@@ -14,15 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.contus.keerthi.myapp.Contract.Employee;
-import com.contus.keerthi.myapp.dbEntry.dbHelper;
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
+
+
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -34,7 +27,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -264,24 +256,4 @@ public class LoginActivity extends AppCompatActivity implements
     }
 }
 
-// checking username & password from local db
 
-/*
-        if(flipflop == 1){
-
-
-                        String res=sharedPreferences.getString("text",null);
-                        un=sharedPreferences.getString("username","username");
-                        p=sharedPreferences.getString("password","pass");       *//*
-
-        dbHelper dbHelper=new dbHelper(LoginActivity.this, Employee.DB_NAME,Employee.DATABASE_VERSION);
-        String res = dbHelper.login(user,pass);
-        if(!res.equals("login_failed")){
-        Toast.makeText(getApplicationContext(),"Login Successfull",Toast.LENGTH_LONG).show();
-        Intent i=new Intent(LoginActivity.this,HomeActivity.class);
-        i.putExtra("username",user);
-        startActivity(i);
-        }else{
-        Toast.makeText(LoginActivity.this, "Wrong Username Password", Toast.LENGTH_SHORT).show();
-        }
-        }*/
