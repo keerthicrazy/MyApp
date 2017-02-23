@@ -24,5 +24,6 @@ public class MyApp {
 
     public static class API implements BaseColumns{
         public static final String NEWS_API = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=ca4b1b240f684c8d9001bfd7d9cdd78e";
+        public static final String IMAGE_URL = "https://unsplash.it/list";
     }
 }
