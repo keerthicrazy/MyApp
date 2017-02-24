@@ -14,9 +14,21 @@
             android:id="@+id/movies"
             android:icon="@drawable/film"
             android:title="Movies"/>
-        <item
-            android:id="@+id/logout"
-            android:icon="@drawable/logout"
-            android:title="Logout"/>
+
     </group>
+
+    <item android:title="Others">
+        <menu>
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/account_card_details"
+                android:title="About Developer" />
+
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/logout"
+                android:title="Logout"/>
+        </menu>
+    </item>
+
 </menu>
