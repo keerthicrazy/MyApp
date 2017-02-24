@@ -7,14 +7,14 @@ package com.contus.keerthi.myapp.POJO;
 public class Gallery {
 
     private String ImageUrl;
-    private String AuthorName;
+    private String ImageTitle;
 
     public Gallery(){
     }
 
-    public Gallery(String imageUrl, String authorName) {
+    public Gallery(String imageUrl, String imageTitle) {
         ImageUrl = imageUrl;
-        AuthorName = authorName;
+        ImageTitle = imageTitle;
     }
 
     public String getImageUrl() {
@@ -25,11 +25,11 @@ public class Gallery {
         ImageUrl = imageUrl;
     }
 
-    public String getAuthorName() {
-        return AuthorName;
+    public String getImageTitle() {
+        return ImageTitle;
     }
 
-    public void setAuthorName(String authorName) {
-        AuthorName = authorName;
+    public void setImageTitle(String imageTitle) {
+        ImageTitle = imageTitle;
     }
 }

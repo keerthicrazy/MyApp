@@ -9,4 +9,5 @@
     <color name="black">#ff000000</color>
     <color name="list">#359DCF</color>
     <color name="title">#222222</color>
+    <color name="transp">#4D4B45</color>
 </resources>

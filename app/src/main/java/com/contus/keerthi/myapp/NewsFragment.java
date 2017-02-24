@@ -2,49 +2,86 @@ package com.contus.keerthi.myapp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.contus.keerthi.myapp.POJO.News;
-import com.contus.keerthi.myapp.custom.GetNews;
-import com.contus.keerthi.myapp.custom.customNewsAdapter;
-
-import java.util.ArrayList;
-
 /**
- * Created by user on 20/2/17.
+ * Created by user on 24/2/17.
  */
 
 public class NewsFragment extends Fragment {
 
-    ArrayList<News> newsArrayList;
-    RecyclerView recyclerView;
-    customNewsAdapter customNewsAdapter;
-    GetNews getNews;
+
+    private ViewPager mViewPager;
+
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    public static int items = 2;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.news,container,false);
-        newsArrayList = new ArrayList<News>();
-        getNews = new GetNews(getActivity());
-        recyclerView=(RecyclerView)view.findViewById(R.id.news_recycle_view);
-        newsArrayList = getNews.getNews();
-        customNewsAdapter = new customNewsAdapter(newsArrayList,getActivity());
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        View view = inflater.inflate(R.layout.news_fragment,container,false);
 
-        Log.i("News Fragement", "onCreateView: "+newsArrayList.size());
+       /* Toolbar toolbar = (Toolbar)view.findViewById(R.id.toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);*/
 
-        recyclerView.setAdapter(customNewsAdapter);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
+
+        mViewPager = (ViewPager)view.findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        TabLayout tabLayout = (TabLayout)view.findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+
         return view;
+    }
+
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            // getItem is called to instantiate the fragment for the given page.
+            // Return a PlaceholderFragment (defined as a static inner class below).
+            switch (position)
+            {
+                case 0:
+                    return new LatestNews();
+                case 1:
+                    return new MovieFragement();
+            }
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+            // Show 3 total pages.
+            return 2;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return "Latest News";
+                case 1:
+                    return "Images";
+
+            }
+            return null;
+        }
     }
 }

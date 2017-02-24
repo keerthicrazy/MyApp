@@ -59,7 +59,7 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(holder.imageView);
         Log.i("CustomGalleryAdapter", "onBindViewHolder: "+image.getImageUrl());
-        holder.textView.setText(image.getAuthorName());
+        holder.textView.setText(image.getImageTitle());
     }
 
     @Override
