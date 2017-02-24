@@ -26,12 +26,17 @@ public class GetImages {
     public ArrayList<Gallery> downloadImages()
     {
         try {
-            String image_string = new Async().execute(MyApp.API.IMAGE_URL).get();
-            JSONArray jsonArray = new JSONArray(image_string);
+            String image_string = new Async().execute(MyApp.API.FLICKR_IMAGE_URL).get();
+
+
+            JSONObject jsonObject = new JSONObject(image_string).getJSONObject("photos");
+            JSONArray jsonArray = jsonObject.getJSONArray("photo");
             for(int i=0;i<=jsonArray.length();i++)
             {
+
                 JSONObject temp = jsonArray.getJSONObject(i);
-                Gallery gallery = new Gallery(temp.getString("post_url"),temp.getString("author"));
+                String imgUrl = GenerateImageURL(temp.getString("farm"),temp.getString("server"),temp.getString("id"),temp.getString("secret"));
+                Gallery gallery = new Gallery(imgUrl,temp.getString("title"));
                 imageArrayList.add(gallery);
             }
 
@@ -44,5 +49,22 @@ public class GetImages {
         } finally {
         }
         return  imageArrayList;
+    }
+
+    private String GenerateImageURL(String farm_id,String server_id,String id,String secret) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("https://farm");
+        sb.append(farm_id);
+        sb.append(".staticflickr.com/");
+        sb.append(server_id);
+        sb.append("/");
+        sb.append(id);
+        sb.append("_");
+        sb.append(secret);
+        sb.append(".jpg");
+
+        return sb.toString();
+
     }
 }

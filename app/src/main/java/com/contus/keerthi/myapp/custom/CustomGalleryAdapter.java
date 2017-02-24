@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.contus.keerthi.myapp.POJO.Gallery;
-import com.contus.keerthi.myapp.POJO.News;
 import com.contus.keerthi.myapp.R;
 
 import java.util.ArrayList;
@@ -52,7 +51,13 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
     @Override
     public void onBindViewHolder(CustomGalleryAdapter.MyViewHolder holder, int position) {
         Gallery image = imageArrayList.get(position);
-        Glide.with(context).load(image.getImageUrl()).diskCacheStrategy(DiskCacheStrategy.RESULT).into(holder.imageView);
+        Glide
+                .with(context)
+                .load(image.getImageUrl())
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.drawable.keerthicircle)
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .into(holder.imageView);
         Log.i("CustomGalleryAdapter", "onBindViewHolder: "+image.getImageUrl());
         holder.textView.setText(image.getAuthorName());
     }
