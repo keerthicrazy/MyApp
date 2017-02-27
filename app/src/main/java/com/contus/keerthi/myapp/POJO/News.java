@@ -18,13 +18,14 @@ public class News {
     private String url;
     private String image_url;
     private String date;
+    private String type;
 
 
     public News()
     {
     }
 
-    public News(String source, String author, String title, String des, String url, String image_url, String date) {
+    public News(String source, String author, String title, String des, String url, String image_url, String date, String type) {
         this.source = source;
         this.author = author;
         this.title = title;
@@ -32,6 +33,7 @@ public class News {
         this.url = url;
         this.image_url = image_url;
         this.date = date;
+        this.type = type;
     }
 
     public String getSource() {
@@ -88,5 +90,13 @@ public class News {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

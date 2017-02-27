@@ -1,10 +1,15 @@
 package com.contus.keerthi.myapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -14,6 +19,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.contus.keerthi.myapp.Contract.MyApp;
 import com.contus.keerthi.myapp.POJO.News;
 
 public class ReadNewsActivity extends AppCompatActivity {
@@ -62,8 +68,30 @@ public class ReadNewsActivity extends AppCompatActivity {
                     newsDes ="News Description Not Available";
                 tv_read_news_title.setText(newsTitle);
                 tv_read_news_des.setText(newsDes);
-                tv_read_news_story.setText("Full Story "+(Html.fromHtml("<a href="+newsURL+"> "+newsSrc+" </a>")));
+                tv_read_news_story.setClickable(true);
                 tv_read_news_story.setMovementMethod(LinkMovementMethod.getInstance());
+
+                SpannableStringBuilder builder = new SpannableStringBuilder();
+
+                SpannableString str1= new SpannableString("Full Story ");
+                str1.setSpan(new ForegroundColorSpan(Color.DKGRAY), 0, str1.length(), 0);
+                builder.append(str1);
+
+                SpannableString str2= new SpannableString(newsSrc);
+                str2.setSpan(new ForegroundColorSpan(Color.BLUE), 0, str2.length(), 0);
+                builder.append(str2);
+
+                tv_read_news_story.setText( builder, TextView.BufferType.SPANNABLE);
+
+                tv_read_news_story.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(newsURL));
+                        startActivity(i);
+                    }
+                });
 
                 b_news_share.setOnClickListener(new View.OnClickListener() {
                     @Override

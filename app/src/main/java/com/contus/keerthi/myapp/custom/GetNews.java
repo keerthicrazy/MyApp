@@ -39,23 +39,32 @@ public class GetNews {
         dbHelper=new dbHelper(context,MyApp.DB_NAME,MyApp.DATABASE_VERSION);
     }
 
-    public ArrayList<News> getNews()
+    public ArrayList<News> getNews(String type)
     {
+        String newsType = type;
         String count_query = "SELECT title FROM "+MyApp.news.TABLE_NAME+" WHERE "
-                +MyApp.news.COLUMN_NAME_PUBLISHEDAT+" = date('now','localtime')";
+                +MyApp.news.COLUMN_NAME_PUBLISHEDAT+" = date('now','localtime') and "
+                +MyApp.news.COLUMN_NAME_NEWS_TYPE+" = '"+newsType+"'";
         int flag = dbHelper.getCount(count_query);
         if(flag<=0)
-            downloadNews();
-        newsArrayList=dbHelper.getNews();
+            downloadNews(newsType);
+        newsArrayList=dbHelper.getNews(newsType);
         return newsArrayList;
     }
 
-    public void downloadNews()
+    public void downloadNews(String type)
     {
         final SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
-
+        String TempApi;
+        String qtype = type;
+        if(qtype.equals("latest"))
+            TempApi = MyApp.API.NEWS_API_LATEST;
+        else if(qtype.equals("top"))
+            TempApi = MyApp.API.NEWS_API_TOP;
+        else
+            TempApi = MyApp.API.NEWS_API_TECH;
         try {
-            String news_string = new Async().execute(MyApp.API.NEWS_API).get();
+            String news_string = new Async().execute(TempApi).get();
 
             JSONObject jsonObject = new JSONObject(news_string);
             JSONArray jsonArray = jsonObject.getJSONArray("articles");
@@ -66,7 +75,7 @@ public class GetNews {
                 String date = parser.format(new Date());
 
                 News news = new News(jsonObject.getString("source").trim(),temp.getString("author").trim(),
-                        temp.getString("title").trim(),temp.getString("description").trim(),temp.getString("url"),temp.getString("urlToImage"),date);
+                        temp.getString("title").trim(),temp.getString("description").trim(),temp.getString("url"),temp.getString("urlToImage"),date,qtype);
                 dbHelper.insertNewsRow(news);
 
             }

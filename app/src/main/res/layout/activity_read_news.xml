@@ -9,7 +9,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:scaleType="fitXY"
         android:id="@+id/readnewsimage"
         android:src="@android:mipmap/sym_def_app_icon"
@@ -30,7 +30,7 @@
         android:layout_marginBottom="10dp"
         android:textStyle="bold"
         android:paddingLeft="10dp"
-        android:paddingRight="20dp"/>
+        android:paddingRight="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -38,12 +38,12 @@
         android:id="@+id/read_news_des"
         android:layout_below="@+id/read_news_title"
         android:paddingLeft="10dp"
-        android:paddingRight="20dp"
+        android:paddingRight="10dp"
+        android:gravity="left"
         android:maxLines="6"
         android:textSize="16sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         />
 
@@ -51,7 +51,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Full Story"
+        android:autoLink="web"
         android:textStyle="bold"
+        android:textSize="16dp"
         android:layout_below="@+id/read_news_des"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -64,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/share_variant"
-        android:background="@android:color/transparent"
+        android:background="@drawable/btnbg"
         android:drawablePadding="5dp"
         android:text="Share"
         android:textStyle="bold"
@@ -78,3 +80,4 @@
         android:layout_alignParentRight="true" />
 
     </RelativeLayout>
+

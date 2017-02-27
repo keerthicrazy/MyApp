@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,7 +38,7 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
 
         public ImageView iv_newsImage;
         public TextView tv_newsTitle,tv_newsAuth,tv_newsSrc;
-        public CardView cv_news;
+
 
 
         public MyViewHolder(View view) {
@@ -46,7 +47,7 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
             tv_newsTitle = (TextView)view.findViewById(R.id.news_title);
             tv_newsAuth = (TextView)view.findViewById(R.id.news_author);
             tv_newsSrc = (TextView)view.findViewById(R.id.news_src);
-            cv_news =(CardView)view.findViewById(R.id.placeCard);
+
         }
     }
 
@@ -69,21 +70,44 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
         holder.tv_newsAuth.setText("by "+news.getAuthor());
         holder.tv_newsSrc.setText("soucre : "+news.getSource());
 
-        holder.cv_news.setOnClickListener(new View.OnClickListener() {
+        holder.iv_newsImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Log.i(TAG, "onClick: onclick recycle view");
-
-                Intent intent = new Intent(context, ReadNewsActivity.class);
-                intent.putExtra("imageUrl",news.getImage_url());
-                intent.putExtra("newsTitle",news.getTitle());
-                intent.putExtra("newsDes",news.getDes());
-                intent.putExtra("newsURL",news.getUrl());
-                intent.putExtra("newsSrc",news.getSource());
-                context.startActivity(intent);
+                onclick(news);
             }
         });
+
+        holder.tv_newsTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclick(news);
+            }
+        });
+
+        holder.tv_newsSrc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclick(news);
+            }
+        });
+
+        holder.tv_newsAuth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclick(news);
+            }
+        });
+    }
+
+    public void onclick(News news)
+    {
+        Intent intent = new Intent(context, ReadNewsActivity.class);
+        intent.putExtra("imageUrl",news.getImage_url());
+        intent.putExtra("newsTitle",news.getTitle());
+        intent.putExtra("newsDes",news.getDes());
+        intent.putExtra("newsURL",news.getUrl());
+        intent.putExtra("newsSrc",news.getSource());
+        context.startActivity(intent);
     }
 
     @Override

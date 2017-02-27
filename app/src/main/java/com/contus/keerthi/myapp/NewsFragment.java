@@ -58,9 +58,11 @@ public class NewsFragment extends Fragment {
             switch (position)
             {
                 case 0:
-                    return new LatestNews();
+                    return new TopNews();
                 case 1:
-                    return new MovieFragement();
+                    return new LatestNews();
+                case 2:
+                    return new TechNews();
             }
             return null;
         }

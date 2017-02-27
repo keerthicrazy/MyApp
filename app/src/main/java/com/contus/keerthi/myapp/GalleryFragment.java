@@ -35,8 +35,8 @@ public class GalleryFragment extends Fragment {
         recyclerView = (RecyclerView)view.findViewById(R.id.gallery_recycler_view);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);
-        getImages = new GetImages();
-        galleryArrayList = getImages.downloadImages();
+        getImages = new GetImages(getActivity());
+        galleryArrayList = getImages.getImages();
         customGalleryAdapter = new CustomGalleryAdapter(galleryArrayList,getActivity());
         recyclerView.setAdapter(customGalleryAdapter);
         return view;

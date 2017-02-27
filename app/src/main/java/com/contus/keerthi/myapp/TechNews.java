@@ -17,14 +17,13 @@ import com.contus.keerthi.myapp.custom.customNewsAdapter;
 import java.util.ArrayList;
 
 /**
- * Created by user on 20/2/17.
+ * Created by user on 27/2/17.
  */
-
-public class LatestNews extends Fragment {
+public class TechNews extends Fragment {
 
     ArrayList<News> newsArrayList;
     RecyclerView recyclerView;
-    customNewsAdapter customNewsAdapter;
+    com.contus.keerthi.myapp.custom.customNewsAdapter customNewsAdapter;
     GetNews getNews;
 
     @Nullable
@@ -35,14 +34,11 @@ public class LatestNews extends Fragment {
         newsArrayList = new ArrayList<News>();
         getNews = new GetNews(getActivity());
         recyclerView=(RecyclerView)view.findViewById(R.id.news_recycle_view);
-        newsArrayList = getNews.getNews("latest");
+        newsArrayList = getNews.getNews("tech");
         customNewsAdapter = new customNewsAdapter(newsArrayList,getActivity());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
-
         recyclerView.setAdapter(customNewsAdapter);
         return view;
     }

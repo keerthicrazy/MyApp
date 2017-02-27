@@ -55,10 +55,8 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
                 .with(context)
                 .load(image.getImageUrl())
                 .placeholder(R.mipmap.ic_launcher)
-                .error(R.drawable.keerthicircle)
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(holder.imageView);
-        Log.i("CustomGalleryAdapter", "onBindViewHolder: "+image.getImageUrl());
         holder.textView.setText(image.getImageTitle());
     }
 
