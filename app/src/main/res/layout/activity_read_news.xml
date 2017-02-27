@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_read_news"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.contus.keerthi.myapp.ReadNewsActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:id="@+id/readnewsimage"
+        android:src="@android:mipmap/sym_def_app_icon"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/readnewsimage"
+        android:id="@+id/read_news_title"
+        android:textSize="20sp"
+        android:maxLines="3"
+        android:textColor="@color/black"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/read_news_des"
+        android:layout_below="@+id/read_news_title"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:maxLines="6"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Story"
+        android:textStyle="bold"
+        android:layout_below="@+id/read_news_des"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:id="@+id/read_news_full_story"
+        android:layout_alignParentLeft="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/share_variant"
+        android:background="@android:color/transparent"
+        android:drawablePadding="5dp"
+        android:text="Share"
+        android:textStyle="bold"
+        android:layout_below="@+id/read_news_des"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:id="@+id/read_share"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+    </RelativeLayout>

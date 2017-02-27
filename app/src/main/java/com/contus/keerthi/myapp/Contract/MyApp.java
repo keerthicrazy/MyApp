@@ -22,12 +22,12 @@ public class MyApp {
         public static final String COLUMN_NAME_PUBLISHEDAT = "publishedAt";
     }
 
-    public static class API implements BaseColumns{
+    public static class API {
         public static final String NEWS_API = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=ca4b1b240f684c8d9001bfd7d9cdd78e";
         public static final String FLICKR_IMAGE_URL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=911f0332a1f208e7352591356af39c9c&per_page=500&user_id=52540720@N02&format=json&nojsoncallback=1";
     }
 
-    public static class PagerNames implements BaseColumns{
+    public static class PagerNames {
         public static final String NEWS_PAGER[] ={"Latest","POPULAR"};
     }
 }

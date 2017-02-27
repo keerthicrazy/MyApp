@@ -1,6 +1,10 @@
 package com.contus.keerthi.myapp.custom;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.contus.keerthi.myapp.POJO.News;
 import com.contus.keerthi.myapp.R;
+import com.contus.keerthi.myapp.ReadNewsActivity;
 
 import java.util.ArrayList;
 
@@ -32,6 +37,7 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
 
         public ImageView iv_newsImage;
         public TextView tv_newsTitle,tv_newsAuth,tv_newsSrc;
+        public CardView cv_news;
 
 
         public MyViewHolder(View view) {
@@ -40,6 +46,7 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
             tv_newsTitle = (TextView)view.findViewById(R.id.news_title);
             tv_newsAuth = (TextView)view.findViewById(R.id.news_author);
             tv_newsSrc = (TextView)view.findViewById(R.id.news_src);
+            cv_news =(CardView)view.findViewById(R.id.placeCard);
         }
     }
 
@@ -55,14 +62,28 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        News news = newsArrayList.get(position);
-
-Glide.with(context).load(news.getImage_url()).diskCacheStrategy(DiskCacheStrategy.RESULT).into(holder.iv_newsImage);
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
+        final News news = newsArrayList.get(position);
+        Glide.with(context).load(news.getImage_url()).diskCacheStrategy(DiskCacheStrategy.RESULT).into(holder.iv_newsImage);
         holder.tv_newsTitle.setText(news.getTitle());
         holder.tv_newsAuth.setText("by "+news.getAuthor());
         holder.tv_newsSrc.setText("soucre : "+news.getSource());
-        Log.i(TAG, "onBindViewHolder: "+news.getDate());
+
+        holder.cv_news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.i(TAG, "onClick: onclick recycle view");
+
+                Intent intent = new Intent(context, ReadNewsActivity.class);
+                intent.putExtra("imageUrl",news.getImage_url());
+                intent.putExtra("newsTitle",news.getTitle());
+                intent.putExtra("newsDes",news.getDes());
+                intent.putExtra("newsURL",news.getUrl());
+                intent.putExtra("newsSrc",news.getSource());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
