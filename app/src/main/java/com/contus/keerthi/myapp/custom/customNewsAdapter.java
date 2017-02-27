@@ -39,8 +39,6 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
         public ImageView iv_newsImage;
         public TextView tv_newsTitle,tv_newsAuth,tv_newsSrc;
 
-
-
         public MyViewHolder(View view) {
             super(view);
             iv_newsImage = (ImageView) view.findViewById(R.id.news_image);

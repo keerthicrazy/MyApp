@@ -1,7 +1,7 @@
 package com.contus.keerthi.myapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,25 +19,25 @@ public class ReadFile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_file);
-        rdbtn=(Button)findViewById(R.id.readbtn);
-        tv=(TextView)findViewById(R.id.readtxt);
+        rdbtn = (Button) findViewById(R.id.readbtn);
+        tv = (TextView) findViewById(R.id.readtxt);
 
         rdbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    String filename=tv.getText().toString().trim().toLowerCase();
-                    FileInputStream fileIn=openFileInput(filename);
-                    InputStreamReader InputRead= new InputStreamReader(fileIn);
+                    String filename = tv.getText().toString().trim().toLowerCase();
+                    FileInputStream fileIn = openFileInput(filename);
+                    InputStreamReader InputRead = new InputStreamReader(fileIn);
 
-                    char[] inputBuffer= new char[100];
-                    String s="";
+                    char[] inputBuffer = new char[100];
+                    String s = "";
                     int charRead;
 
-                    while ((charRead=InputRead.read(inputBuffer))>0) {
+                    while ((charRead = InputRead.read(inputBuffer)) > 0) {
 
-                        String readstring=String.copyValueOf(inputBuffer,0,charRead);
-                        s +=readstring;
+                        String readstring = String.copyValueOf(inputBuffer, 0, charRead);
+                        s += readstring;
                     }
                     InputRead.close();
                     tv.setText(s);
@@ -45,7 +45,7 @@ public class ReadFile extends AppCompatActivity {
 
                 } catch (Exception e) {
                     tv.setText("Wrong File Name");
-                    Log.i("TAG", "onClick: "+e.getMessage());
+                    Log.i("TAG", "onClick: " + e.getMessage());
                 }
             }
         });

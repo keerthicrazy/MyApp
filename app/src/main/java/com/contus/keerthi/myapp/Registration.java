@@ -2,7 +2,6 @@ package com.contus.keerthi.myapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,7 +26,7 @@ public class Registration extends AppCompatActivity {
     // defining view objects
     Button reg;
     TextView existing;
-    EditText username,password;
+    EditText username, password;
     private ProgressDialog progressDialog;
 
     //defining firebaseauth object
@@ -39,47 +38,47 @@ public class Registration extends AppCompatActivity {
         setContentView(R.layout.registration);
         this.setTitle(R.string.registbtn);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        progressDialog=new ProgressDialog(this);
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
 
-        reg=(Button)findViewById(R.id.registbtn);
-        existing=(TextView)findViewById(R.id.existing);
-        username=(EditText)findViewById(R.id.username1);
-        password=(EditText)findViewById(R.id.password);
+        reg = (Button) findViewById(R.id.registbtn);
+        existing = (TextView) findViewById(R.id.existing);
+        username = (EditText) findViewById(R.id.username1);
+        password = (EditText) findViewById(R.id.password);
 
         reg.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
-                   progressDialog.setTitle("Sign IN");
-                   progressDialog.setMessage("Registering please wait..");
-                   progressDialog.show();
+                progressDialog.setTitle("Sign IN");
+                progressDialog.setMessage("Registering please wait..");
+                progressDialog.show();
 
-                   String email = username.getText().toString();
-                   String pass = password.getText().toString();
+                String email = username.getText().toString();
+                String pass = password.getText().toString();
 
-                   firebaseAuth.createUserWithEmailAndPassword(email, pass)
-                           .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                               @Override
-                               public void onComplete(@NonNull Task<AuthResult> task) {
+                firebaseAuth.createUserWithEmailAndPassword(email, pass)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                   if (task.isSuccessful()) {
-                                       Toast.makeText(Registration.this, "Successfully registered !!! Login to Continue ..", Toast.LENGTH_LONG).show();
-                                       startActivity(new Intent(Registration.this,LoginActivity.class));
-                                   } else {
-                                       Toast.makeText(Registration.this, "Registration Error", Toast.LENGTH_LONG).show();
-                                   }
-                                    if(progressDialog.isShowing())
-                                        progressDialog.dismiss();
-                               }
-                           });
-               }
-           });
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Registration.this, "Successfully registered !!! Login to Continue ..", Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(Registration.this, LoginActivity.class));
+                                } else {
+                                    Toast.makeText(Registration.this, "Registration Error", Toast.LENGTH_LONG).show();
+                                }
+                                if (progressDialog.isShowing())
+                                    progressDialog.dismiss();
+                            }
+                        });
+            }
+        });
 
         existing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Registration.this,LoginActivity.class));
+                startActivity(new Intent(Registration.this, LoginActivity.class));
             }
         });
     }
