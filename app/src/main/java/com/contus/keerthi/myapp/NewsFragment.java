@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.contus.keerthi.myapp.Contract.MyApp;
+
 /**
  * Created by user on 24/2/17.
  */
@@ -31,9 +33,6 @@ public class NewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.news_fragment,container,false);
-
-       /* Toolbar toolbar = (Toolbar)view.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);*/
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
 
@@ -68,20 +67,12 @@ public class NewsFragment extends Fragment {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 2;
+            return MyApp.PagerNames.NEWS_PAGER.length;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "Latest News";
-                case 1:
-                    return "Images";
-
-            }
-            return null;
+            return MyApp.PagerNames.NEWS_PAGER[position];
         }
     }
 }
