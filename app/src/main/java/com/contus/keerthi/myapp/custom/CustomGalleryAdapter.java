@@ -1,6 +1,7 @@
 package com.contus.keerthi.myapp.custom;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.contus.keerthi.myapp.ImageViewerActivity;
 import com.contus.keerthi.myapp.POJO.Gallery;
 import com.contus.keerthi.myapp.R;
 
@@ -50,7 +52,7 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
 
     @Override
     public void onBindViewHolder(CustomGalleryAdapter.MyViewHolder holder, int position) {
-        Gallery image = imageArrayList.get(position);
+        final Gallery image = imageArrayList.get(position);
         Glide
                 .with(context)
                 .load(image.getImageUrl())
@@ -58,6 +60,27 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(holder.imageView);
         holder.textView.setText(image.getImageTitle());
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclick(image.getImageUrl());
+            }
+        });
+
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onclick(image.getImageUrl());
+            }
+        });
+    }
+
+    public void onclick(String url)
+    {
+        Intent intent = new Intent(context, ImageViewerActivity.class);
+        intent.putExtra("imgUrl",url);
+        context.startActivity(intent);
     }
 
     @Override

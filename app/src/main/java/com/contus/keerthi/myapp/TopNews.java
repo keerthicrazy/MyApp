@@ -29,12 +29,12 @@ public class TopNews extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view=inflater.inflate(R.layout.news,container,false);
+        View view = inflater.inflate(R.layout.news, container, false);
         newsArrayList = new ArrayList<News>();
         getNews = new GetNews(getActivity());
-        recyclerView=(RecyclerView)view.findViewById(R.id.news_recycle_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.news_recycle_view);
         newsArrayList = getNews.getNews("top");
-        customNewsAdapter = new customNewsAdapter(newsArrayList,getActivity());
+        customNewsAdapter = new customNewsAdapter(newsArrayList, getActivity());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

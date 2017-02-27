@@ -1,7 +1,5 @@
 package com.contus.keerthi.myapp;
 
-import android.util.Log;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

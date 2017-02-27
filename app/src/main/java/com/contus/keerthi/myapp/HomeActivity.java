@@ -52,6 +52,10 @@ public class HomeActivity extends AppCompatActivity
 
         initListener();
         setUserDetails();
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_home, new NewsFragment())
+                .commit();
     }
 
     private void initListener() {
