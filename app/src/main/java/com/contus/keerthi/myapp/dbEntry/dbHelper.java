@@ -19,8 +19,8 @@ import java.util.List;
 
 
 
-/**
- * Created by user on 22/2/17.
+/**Separate Database class for all the classes
+ * Created by Keerthivasan on 22/2/17.
  */
 
 public class dbHelper extends SQLiteOpenHelper {
@@ -31,6 +31,10 @@ public class dbHelper extends SQLiteOpenHelper {
         super(context,db_name,null,db_version);
     }
 
+    /**
+     * databse and table creation
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -40,6 +44,9 @@ public class dbHelper extends SQLiteOpenHelper {
                 MyApp.news.COLUMN_NAME_IMAGE_URL+ " TEXT," + MyApp.news.COLUMN_NAME_DES +" TEXT, "+
                 MyApp.news.COLUMN_NAME_NEWS_TYPE+ " TEXT,"+
                 MyApp.news.COLUMN_NAME_PUBLISHEDAT+" DATETIME "+ " );";
+        /**
+         * query created
+         */
 
         String gallery_table_query ="CREATE TABLE IF NOT EXISTS "+ MyApp.Gallery.TABLE_NAME+" ( "+
                 MyApp.Gallery.COLUMN_IMAGE_SRC + " TEXT,"+MyApp.Gallery.COLUMN_IMAGE_TITLE+" TEXT)";
@@ -48,12 +55,23 @@ public class dbHelper extends SQLiteOpenHelper {
         db.execSQL(gallery_table_query);
     }
 
+    /**
+     * Versions
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+MyApp.news.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+MyApp.Gallery.TABLE_NAME);
     }
 
+    /**
+     * Insert statement fop news
+     * @param news
+     * @return
+     */
     public boolean insertNewsRow(News news)
     {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -72,6 +90,11 @@ public class dbHelper extends SQLiteOpenHelper {
         return n>0;
     }
 
+    /**
+     * Insert query for images
+     * @param gallery
+     * @return
+     */
     public boolean insertGalleryRow(Gallery gallery)
     {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -84,9 +107,11 @@ public class dbHelper extends SQLiteOpenHelper {
         return n>0;
     }
 
+    /**
+     * select statement for gallery table
+     * @return
+     */
     public ArrayList<Gallery> getImages(){
-
-
 
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Gallery> imageList = null;
@@ -115,9 +140,12 @@ public class dbHelper extends SQLiteOpenHelper {
         return imageList;
     }
 
+    /**
+     * select statement for News table
+     * @param type
+     * @return
+     */
     public ArrayList<News> getNews(String type){
-
-
 
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<News> newsList = null;
@@ -153,6 +181,11 @@ public class dbHelper extends SQLiteOpenHelper {
         return newsList;
     }
 
+    /**
+     * cursor to get count from db
+     * @param query
+     * @return
+     */
     public int getCount(String query){
         SQLiteDatabase db=this.getReadableDatabase();
         try {

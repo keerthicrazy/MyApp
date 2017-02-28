@@ -1,7 +1,7 @@
 package com.contus.keerthi.myapp.POJO;
 
-/**
- * Created by user on 23/2/17.
+/**Pojo class for Gallery
+ * Created by Keerthivasan on 23/2/17.
  */
 
 public class Gallery {

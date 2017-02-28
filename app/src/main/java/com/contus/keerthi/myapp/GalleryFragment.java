@@ -10,14 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.contus.keerthi.myapp.POJO.Gallery;
-import com.contus.keerthi.myapp.custom.CustomGalleryAdapter;
-import com.contus.keerthi.myapp.custom.GetImages;
-import com.contus.keerthi.myapp.custom.GetNews;
+import com.contus.keerthi.myapp.Custom.CustomGalleryAdapter;
+import com.contus.keerthi.myapp.Custom.GetImages;
 
 import java.util.ArrayList;
 
-/**
- * Created by user on 20/2/17.
+/**Fragment with recyclerview to show images
+ * Created by Keerthivasan on 20/2/17.
  */
 
 public class GalleryFragment extends Fragment {

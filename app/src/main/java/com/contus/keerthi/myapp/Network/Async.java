@@ -12,8 +12,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
-/**
- * Created by user on 22/2/17.
+/**AsyncTask class to implement the url connection
+ * Created by Keerthivasan on 22/2/17.
  */
 
 public class Async extends AsyncTask<String,Void,String> {
@@ -35,6 +35,11 @@ public class Async extends AsyncTask<String,Void,String> {
         Log.i(TAG, "onPreExecute: ");
     }
 
+    /**
+     * Background thread
+     * @param params
+     * @return
+     */
     @Override
     protected String doInBackground(String... params) {
         StringBuilder stringBuilder = new StringBuilder();

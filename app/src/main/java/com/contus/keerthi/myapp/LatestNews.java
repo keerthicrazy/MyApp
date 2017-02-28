@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.contus.keerthi.myapp.POJO.News;
-import com.contus.keerthi.myapp.custom.GetNews;
-import com.contus.keerthi.myapp.custom.customNewsAdapter;
+import com.contus.keerthi.myapp.Custom.GetNews;
+import com.contus.keerthi.myapp.Custom.customNewsAdapter;
 
 import java.util.ArrayList;
 

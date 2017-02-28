@@ -1,12 +1,7 @@
 package com.contus.keerthi.myapp.POJO;
 
-import android.widget.ImageView;
-
-import java.sql.Date;
-
-
-/**
- * Created by user on 22/2/17.
+/**POJO class for news
+ * Created by Keerthivasan on 22/2/17.
  */
 
 public class News {

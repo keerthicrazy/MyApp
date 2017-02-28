@@ -1,4 +1,7 @@
 package com.contus.keerthi.myapp;
+/**
+ * This activity is used to display the news with categories. Also it checks signin with firebase
+ */
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,6 +60,9 @@ public class HomeActivity extends AppCompatActivity
                 .commit();
     }
 
+    /**
+     * Listener for Firebase
+     */
     private void initListener() {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -102,9 +107,6 @@ public class HomeActivity extends AppCompatActivity
                 break;
             case R.id.news:
                 fragementClass=NewsFragment.class;
-                break;
-            case R.id.movies:
-                fragementClass=MovieFragement.class;
                 break;
             case R.id.about:
                 fragementClass=profileActivity.class;

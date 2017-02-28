@@ -20,11 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Registration" />
-        <activity android:name=".fileOperation" />
-        <activity android:name=".ReadFile" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ReadNewsActivity"

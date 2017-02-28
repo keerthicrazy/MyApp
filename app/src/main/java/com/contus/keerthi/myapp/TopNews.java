@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.contus.keerthi.myapp.POJO.News;
-import com.contus.keerthi.myapp.custom.GetNews;
-import com.contus.keerthi.myapp.custom.customNewsAdapter;
+import com.contus.keerthi.myapp.Custom.GetNews;
+import com.contus.keerthi.myapp.Custom.customNewsAdapter;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class TopNews extends Fragment {
     ArrayList<News> newsArrayList;
     RecyclerView recyclerView;
-    com.contus.keerthi.myapp.custom.customNewsAdapter customNewsAdapter;
+    com.contus.keerthi.myapp.Custom.customNewsAdapter customNewsAdapter;
     GetNews getNews;
 
     @Nullable

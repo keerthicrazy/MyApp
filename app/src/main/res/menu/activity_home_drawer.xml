@@ -10,10 +10,6 @@
             android:id="@+id/news"
             android:icon="@drawable/newspaper"
             android:title="News"/>
-        <item
-            android:id="@+id/movies"
-            android:icon="@drawable/film"
-            android:title="Movies"/>
 
     </group>
 
