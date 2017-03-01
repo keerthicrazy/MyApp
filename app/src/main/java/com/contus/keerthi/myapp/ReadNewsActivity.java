@@ -62,7 +62,6 @@ public class ReadNewsActivity extends AppCompatActivity {
                 Glide.with(this)
                         .load(imageUrl)
                         .diskCacheStrategy(DiskCacheStrategy.RESULT)
-                        .placeholder(R.mipmap.ic_launcher)
                         .into(iv_read_news_image);
 
 

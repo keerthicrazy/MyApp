@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -52,7 +53,7 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
         final News news = newsArrayList.get(position);
 
         /* Loading the image in ImageView using GLide Library*/
-        Glide.with(context).load(news.getImage_url()).diskCacheStrategy(DiskCacheStrategy.RESULT).into(holder.iv_newsImage);
+        Glide.with(context).load(news.getImage_url()).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(holder.iv_newsImage);
         /*set the value in textview */
         holder.tv_newsTitle.setText(news.getTitle());
         holder.tv_newsAuth.setText("by "+news.getAuthor());
@@ -83,6 +84,8 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
                 onclick(news);
             }
         });
+
+
     }
 
     /*method for click event from image and textview that goes to ReadNews Activity*/
@@ -109,6 +112,7 @@ public class customNewsAdapter extends RecyclerView.Adapter<customNewsAdapter.My
         /* Declaring View Elements*/
         public ImageView iv_newsImage;
         public TextView tv_newsTitle,tv_newsAuth,tv_newsSrc;
+        public RelativeLayout relativeLayout;
 
         /* Constructor that initialize the view elements*/
         public MyViewHolder(View view) {
