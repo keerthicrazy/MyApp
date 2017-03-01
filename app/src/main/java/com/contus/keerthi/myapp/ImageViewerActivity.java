@@ -1,8 +1,11 @@
 package com.contus.keerthi.myapp;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.Window;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -15,9 +18,15 @@ public class ImageViewerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_image_viewer);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        this.setTitle("Image Viewer");
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+
+        }
         Intent intent = getIntent();
 
         String imgUrl = "";
@@ -33,10 +42,21 @@ public class ImageViewerActivity extends AppCompatActivity {
         Glide
                 .with(this)
                 .load(imgUrl)
-                .placeholder(R.mipmap.ic_launcher)
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(imageView);
+    }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

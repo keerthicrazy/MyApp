@@ -7,9 +7,14 @@
     android:background="@color/transp"
     tools:context="com.contus.keerthi.myapp.ImageViewerActivity">
 
-    <ImageView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageViewer"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageViewer"
+            android:scaleType="centerCrop"
+            />
+    </FrameLayout>
 </RelativeLayout>

@@ -29,9 +29,23 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
     ArrayList<Gallery> imageArrayList;
     /* Context variable to hold activity or class context*/
     Context context;
+    AdapterInterface adapterInterface;
+
+    public void setAdapterInterface(CustomGalleryAdapter.AdapterInterface adapterInterface) {
+        this.adapterInterface = adapterInterface;
+    }
+
+    public interface AdapterInterface
+    {
+        public void fetchData(View view,int position);
+
+    }
+
+
 
     /* Arguement Constructor that receives arraylist and context*/
-    public CustomGalleryAdapter(ArrayList<Gallery> imageArrayList, Context context) {
+    public CustomGalleryAdapter(ArrayList<Gallery> imageArrayList, Context context,AdapterInterface adapterInterface) {
+        this.adapterInterface = adapterInterface;
         this.imageArrayList = imageArrayList;
         this.context = context;
     }
@@ -54,35 +68,16 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
         Glide
                 .with(context)
                 .load(image.getImageUrl())
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(holder.imageView);
 
         /*set the value in image title*/
         holder.textView.setText(image.getImageTitle());
 
-        /*click event of gallery image*/
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onclick(image.getImageUrl());
-            }
-        });
 
-        /* Click Event for Image title */
-        holder.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onclick(image.getImageUrl());
-            }
-        });
     }
 
-    /*method for click event from image and description*/
-    public void onclick(String url) {
-        Intent intent = new Intent(context, ImageViewerActivity.class);
-        intent.putExtra("imgUrl", url);
-        context.startActivity(intent);
-    }
+
 
     /* Return the ArrayList Size*/
     @Override
@@ -101,6 +96,13 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
             super(view);
             imageView = (ImageView) view.findViewById(R.id.gallery_images);
             textView = (TextView) view.findViewById(R.id.gal_image_des);
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    adapterInterface.fetchData(v,getPosition());
+                }
+            });
         }
     }
 }
