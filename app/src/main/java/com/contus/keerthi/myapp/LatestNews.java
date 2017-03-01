@@ -1,5 +1,6 @@
 package com.contus.keerthi.myapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,19 +13,20 @@ import android.view.ViewGroup;
 
 import com.contus.keerthi.myapp.POJO.News;
 import com.contus.keerthi.myapp.Custom.GetNews;
-import com.contus.keerthi.myapp.Custom.customNewsAdapter;
+import com.contus.keerthi.myapp.Custom.CustomNewsAdapter;
 
 import java.util.ArrayList;
+import com.contus.keerthi.myapp.Custom.CustomNewsAdapter.AdapterInterface;
 
 /**
  * Created by user on 20/2/17.
  */
 
-public class LatestNews extends Fragment {
+public class LatestNews extends Fragment  {
 
     ArrayList<News> newsArrayList;
     RecyclerView recyclerView;
-    customNewsAdapter customNewsAdapter;
+    CustomNewsAdapter customNewsAdapter;
     GetNews getNews;
 
     @Nullable
@@ -36,14 +38,28 @@ public class LatestNews extends Fragment {
         getNews = new GetNews(getActivity());
         recyclerView=(RecyclerView)view.findViewById(R.id.news_recycle_view);
         newsArrayList = getNews.getNews("latest");
-        customNewsAdapter = new customNewsAdapter(newsArrayList,getActivity());
+        customNewsAdapter = new CustomNewsAdapter(newsArrayList,getActivity(), adapterInterface);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
-
         recyclerView.setAdapter(customNewsAdapter);
+
         return view;
     }
+
+    CustomNewsAdapter.AdapterInterface adapterInterface = new AdapterInterface() {
+        @Override
+        public void fetchData(View view,int position) {
+            News news = newsArrayList.get(position);
+            Intent intent = new Intent(view.getContext(), ReadNewsActivity.class);
+            intent.putExtra("imageUrl",news.getImage_url());
+            intent.putExtra("newsTitle",news.getTitle());
+            intent.putExtra("newsDes",news.getDes());
+            intent.putExtra("newsURL",news.getUrl());
+            intent.putExtra("newsSrc",news.getSource());
+            view.getContext().startActivity(intent);
+        }
+    };
+
+
 }

@@ -20,7 +20,7 @@
     </style>
 
     <style name="titleTransparent" parent="AppTheme">
-        <item name="android:background">@android:color/transparent</item>
+        <item name="colorPrimary">@android:color/transparent</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

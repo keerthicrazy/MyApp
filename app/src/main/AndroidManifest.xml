@@ -27,7 +27,7 @@
         <activity
             android:name=".ReadNewsActivity"
             android:theme="@style/titleTransparent" />
-        <activity android:name=".ImageViewerActivity"></activity>
+        <activity android:name=".ImageViewerActivity" android:theme="@style/titleTransparent"></activity>
     </application>
 
 </manifest>

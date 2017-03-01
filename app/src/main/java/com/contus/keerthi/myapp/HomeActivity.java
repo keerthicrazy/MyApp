@@ -58,6 +58,7 @@ public class HomeActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_home, new NewsFragment())
                 .commit();
+        this.setTitle("News");
     }
 
     /**
