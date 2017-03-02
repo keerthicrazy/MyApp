@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.contus.keerthi.myapp.Contract.MyApp;
 import com.contus.keerthi.myapp.Network.Async;
-import com.contus.keerthi.myapp.POJO.News;
-import com.contus.keerthi.myapp.dbEntry.dbHelper;
+import com.contus.keerthi.myapp.Pojo.News;
+import com.contus.keerthi.myapp.DbEntry.dbHelper;
 
 
 import org.json.JSONArray;

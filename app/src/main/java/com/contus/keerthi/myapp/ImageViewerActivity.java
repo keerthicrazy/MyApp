@@ -20,12 +20,11 @@ public class ImageViewerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_image_viewer);
-        this.setTitle("Image Viewer");
+        this.setTitle("Gallery");
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setDefaultDisplayHomeAsUpEnabled(true);
-
         }
         Intent intent = getIntent();
 

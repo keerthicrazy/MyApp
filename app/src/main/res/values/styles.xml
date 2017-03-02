@@ -14,12 +14,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="splashScreen" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="titleTransparent" parent="AppTheme">
+    <style name="titleTransparent" parent="AppTheme.NoActionBar">
         <item name="colorPrimary">@android:color/transparent</item>
     </style>
 

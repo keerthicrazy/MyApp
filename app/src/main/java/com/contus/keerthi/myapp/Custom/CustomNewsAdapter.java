@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.contus.keerthi.myapp.POJO.News;
+import com.contus.keerthi.myapp.Pojo.News;
 import com.contus.keerthi.myapp.R;
 
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class CustomNewsAdapter extends RecyclerView.Adapter<CustomNewsAdapter.My
         /*set the value in textview */
         holder.tv_newsTitle.setText(news.getTitle());
         holder.tv_newsAuth.setText("by "+news.getAuthor());
-        holder.tv_newsSrc.setText("soucre : "+news.getSource());
+        holder.tv_newsSrc.setText("Source : "+news.getSource());
 
     }
 

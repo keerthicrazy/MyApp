@@ -62,12 +62,13 @@ public class LoginActivity extends AppCompatActivity implements
 
     private ProgressDialog mProgressDialog;
 
-    SharedPreferences sharedPreferences;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
+        this.setTheme(R.style.AppTheme);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         this.setTitle(R.string.loginbtn);
 
@@ -100,7 +101,7 @@ public class LoginActivity extends AppCompatActivity implements
         newA=(TextView)findViewById(R.id.new_account);
         username=(EditText)findViewById(R.id.email);
         password=(EditText)findViewById(R.id.password);
-        sharedPreferences=getSharedPreferences("login",MODE_PRIVATE);
+
 
 
 
@@ -108,18 +109,18 @@ public class LoginActivity extends AppCompatActivity implements
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    Toast.makeText(getApplicationContext(),"Login Successfull",Toast.LENGTH_LONG).show();
                     Intent i=new Intent(LoginActivity.this,HomeActivity.class);
                     i.putExtra("username",user.getDisplayName());
                     startActivity(i);
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
 
@@ -149,7 +150,6 @@ public class LoginActivity extends AppCompatActivity implements
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    Toast.makeText(getApplicationContext(),"Login Successfull",Toast.LENGTH_LONG).show();
                                     Intent i=new Intent(LoginActivity.this,HomeActivity.class);
                                     i.putExtra("username",user);
                                     startActivity(i);

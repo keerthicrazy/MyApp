@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.contus.keerthi.myapp.POJO.News;
+import com.contus.keerthi.myapp.Pojo.News;
 import com.contus.keerthi.myapp.Custom.GetNews;
 import com.contus.keerthi.myapp.Custom.CustomNewsAdapter;
 
@@ -51,7 +51,7 @@ public class LatestNews extends Fragment  {
         @Override
         public void fetchData(View view,int position) {
             News news = newsArrayList.get(position);
-            Intent intent = new Intent(view.getContext(), ReadNewsActivity.class);
+            Intent intent = new Intent(view.getContext(), NewsViewerActivity.class);
             intent.putExtra("imageUrl",news.getImage_url());
             intent.putExtra("newsTitle",news.getTitle());
             intent.putExtra("newsDes",news.getDes());

@@ -12,7 +12,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/splashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,10 +26,11 @@
             android:name=".HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ReadNewsActivity" />
         <activity
-            android:name=".ReadNewsActivity"
+            android:name=".ImageViewerActivity"
             android:theme="@style/titleTransparent" />
-        <activity android:name=".ImageViewerActivity" android:theme="@style/titleTransparent"></activity>
+        <activity android:name=".NewsViewerActivity"></activity>
     </application>
 
 </manifest>

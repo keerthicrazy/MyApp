@@ -110,13 +110,13 @@ public class HomeActivity extends AppCompatActivity
                 fragementClass=NewsFragment.class;
                 break;
             case R.id.about:
-                fragementClass=profileActivity.class;
+                fragementClass=ProfileActivity.class;
                 break;
             case R.id.logout:
                 logout();
                 break;
             default:
-                fragementClass=GalleryFragment.class;
+                fragementClass=NewsFragment.class;
                 break;
         }
         try{

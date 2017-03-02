@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_read_news"
+    android:id="@+id/activity_news_viewer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.contus.keerthi.myapp.ReadNewsActivity">
+
+    tools:context="com.contus.keerthi.myapp.NewsViewerActivity">
+
 
     <ImageView
         android:layout_width="match_parent"
@@ -78,6 +79,4 @@
         android:id="@+id/read_share"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true" />
-
-    </RelativeLayout>
-
+</RelativeLayout>

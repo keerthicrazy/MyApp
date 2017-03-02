@@ -7,7 +7,7 @@ import android.support.v4.app.ShareCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
+import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -18,34 +18,33 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.contus.keerthi.myapp.Contract.MyApp;
-import com.contus.keerthi.myapp.POJO.News;
 
 public class ReadNewsActivity extends AppCompatActivity {
 
     private ImageView iv_read_news_image;
     private TextView tv_read_news_title,tv_read_news_des,tv_read_news_story;
     private Button b_news_share;
+   Toolbar toolbar;
 
     String imageUrl,newsTitle,newsDes,newsURL,newsSrc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_read_news);
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setDefaultDisplayHomeAsUpEnabled(true);
-        }
+   /*     toolbar = (Toolbar)findViewById(R.id.read_news_toolbar);
+        setSupportActionBar(toolbar);*/
+          try {
+              ActionBar actionBar = getSupportActionBar();
+              if(actionBar != null){
+                  actionBar.setDisplayShowHomeEnabled(true);
+                  actionBar.setDefaultDisplayHomeAsUpEnabled(true);
+              }
 
-        this.setTitle("News Viewer");
-        try {
+              this.setTitle("News");
                 iv_read_news_image = (ImageView)findViewById(R.id.readnewsimage);
                 tv_read_news_title = (TextView)findViewById(R.id.read_news_title);
                 tv_read_news_des = (TextView)findViewById(R.id.read_news_des);

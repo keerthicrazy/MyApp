@@ -10,12 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.contus.keerthi.myapp.Contract.MyApp;
-import com.contus.keerthi.myapp.Custom.CustomNewsAdapter;
-import com.contus.keerthi.myapp.POJO.Gallery;
+import com.contus.keerthi.myapp.Pojo.Gallery;
 import com.contus.keerthi.myapp.Custom.CustomGalleryAdapter;
 import com.contus.keerthi.myapp.Custom.GetImages;
-import com.contus.keerthi.myapp.POJO.News;
 
 import java.util.ArrayList;
 

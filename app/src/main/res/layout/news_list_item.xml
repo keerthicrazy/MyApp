@@ -61,6 +61,7 @@
                 android:layout_below="@+id/news_author"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:id="@+id/news_src"
                 android:text="Times of India"/>
     </RelativeLayout>
