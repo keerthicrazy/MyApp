@@ -6,10 +6,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -58,11 +61,23 @@ public class NewsFragment extends Fragment {
             switch (position)
             {
                 case 0:
-                    return new TopNews();
+                    FetchNews top =new FetchNews();
+                    Bundle args = new Bundle();
+                    args.putString("newsType","top");
+                    top.setArguments(args);
+                    return top;
                 case 1:
-                    return new LatestNews();
+                    FetchNews latest =new FetchNews();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("newsType","latest");
+                    latest.setArguments(bundle);
+                    return latest;
                 case 2:
-                    return new TechNews();
+                    FetchNews tech =new FetchNews();
+                    Bundle tech_args = new Bundle();
+                    tech_args.putString("newsType","tech");
+                    tech.setArguments(tech_args);
+                    return tech;
             }
             return null;
         }
@@ -77,4 +92,5 @@ public class NewsFragment extends Fragment {
             return MyApp.PagerNames.NEWS_PAGER[position];
         }
     }
+
 }

@@ -7,6 +7,7 @@ import android.support.v4.app.ShareCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -22,23 +23,30 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 public class NewsViewerActivity extends AppCompatActivity {
 
-    private ImageView iv_read_news_image;
-    private TextView tv_read_news_title,tv_read_news_des,tv_read_news_story;
+    private ImageView iv_read_news_image,BackButton;
+    private TextView tv_read_news_title,tv_read_news_des,tv_read_news_story,newsTitleText;
     private Button b_news_share;
+
+    Toolbar toolbar;
 
     String imageUrl,newsTitle,newsDes,newsURL,newsSrc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_viewer);
-        try {
-            ActionBar actionBar = getSupportActionBar();
-            if(actionBar != null){
-                actionBar.setDisplayShowHomeEnabled(true);
-                actionBar.setDefaultDisplayHomeAsUpEnabled(true);
-            }
 
-            this.setTitle("News");
+        try {
+            toolbar = (Toolbar)findViewById(R.id.news_toolbar);
+            setSupportActionBar(toolbar);
+            BackButton = (ImageView)findViewById(R.id.actBackbtn);
+            newsTitleText = (TextView)findViewById(R.id.newsTitleText);
+            BackButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+            newsTitleText.setText("News");
             iv_read_news_image = (ImageView)findViewById(R.id.readnewsimage);
             tv_read_news_title = (TextView)findViewById(R.id.read_news_title);
             tv_read_news_des = (TextView)findViewById(R.id.read_news_des);
@@ -99,28 +107,13 @@ public class NewsViewerActivity extends AppCompatActivity {
                     ShareCompat.IntentBuilder
                             .from(NewsViewerActivity.this)
                             .setType("text/plain")
-                            .setText("MyApp News")
-                            .setText(newsTitle)
-                            .setText(newsURL)
+                            .setText(newsTitle+"  "+newsURL)
                             .setChooserTitle("Open using")
                             .startChooser();
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId())
-        {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
     }
 }

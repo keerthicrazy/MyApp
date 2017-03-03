@@ -4,15 +4,35 @@
     android:id="@+id/activity_news_viewer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.contus.keerthi.myapp.NewsViewerActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/news_toolbar"
+        android:background="@drawable/side_nav_bar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/actBackbtn"
+            android:src="@drawable/ic_arrow_back_white_24dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/newsTitleText"
+            android:layout_marginLeft="25dp"
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
+    </android.support.v7.widget.Toolbar>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:scaleType="fitXY"
         android:id="@+id/readnewsimage"
+        android:layout_below="@+id/news_toolbar"
         />
 
 

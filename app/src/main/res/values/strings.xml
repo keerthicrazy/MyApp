@@ -30,5 +30,6 @@
 
     <string name="dev_name">Keerthivasan</string>
     <string name="dev_bio">Android Developer</string>
+    <string name="action_search">Search</string>
 
 </resources>

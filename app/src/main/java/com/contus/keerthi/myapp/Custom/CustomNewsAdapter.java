@@ -33,6 +33,11 @@ public class CustomNewsAdapter extends RecyclerView.Adapter<CustomNewsAdapter.My
     AdapterInterface adapterInterface;
     View view;
 
+    public void swap(ArrayList<News> data){
+        newsArrayList.clear();
+        newsArrayList.addAll(data);
+        notifyDataSetChanged();
+    }
 
     public void setAdapterInterface(AdapterInterface adapterInterface) {
         this.adapterInterface = adapterInterface;

@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -153,4 +156,5 @@ public class HomeActivity extends AppCompatActivity
         super.onStop();
         mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
     }
+
 }

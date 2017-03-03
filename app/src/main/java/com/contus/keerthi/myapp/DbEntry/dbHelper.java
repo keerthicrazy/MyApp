@@ -175,6 +175,41 @@ public class dbHelper extends SQLiteOpenHelper {
         return newsList;
     }
 
+    public ArrayList<News> getSearchNews(String key){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<News> newsList = null;
+        Cursor cursor = null;
+        try {
+            newsList = new ArrayList<News>();
+
+            String selectQuery = "SELECT * FROM "+MyApp.news.TABLE_NAME + " WHERE "
+                    +MyApp.news.COLUMN_NAME_TITLE+" LIKE '%"+key+"%'";
+            cursor = db.rawQuery(selectQuery,null);
+            if(cursor.moveToFirst())
+            {
+                do{
+                    News news= new News();
+                    news.setSource(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_SOURCE)));
+                    news.setAuthor(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_AUTHOR)));
+                    news.setTitle(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_TITLE)));
+                    news.setDes(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_DES)));
+                    news.setUrl(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_URL)));
+                    news.setImage_url(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_IMAGE_URL)));
+                    news.setDate(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_PUBLISHEDAT)));
+                    news.setType(cursor.getString(cursor.getColumnIndex(MyApp.news.COLUMN_NAME_NEWS_TYPE)));
+                    newsList.add(news);
+                }while(cursor.moveToNext());
+            }
+            cursor.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            db.close();
+        }
+
+        return newsList;
+    }
     /**
      * cursor to get count from db
      * @param query

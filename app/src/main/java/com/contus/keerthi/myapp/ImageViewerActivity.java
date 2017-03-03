@@ -4,30 +4,39 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 public class ImageViewerActivity extends AppCompatActivity {
 
-    ImageView imageView;
+    ImageView imageView,BackButton;
+    TextView TitleText;
+    Toolbar toolbar ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_image_viewer);
-        this.setTitle("Gallery");
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setDefaultDisplayHomeAsUpEnabled(true);
-        }
-        Intent intent = getIntent();
+        toolbar = (Toolbar)findViewById(R.id.gallery_toolbar);
+        setSupportActionBar(toolbar);
+        BackButton = (ImageView)findViewById(R.id.galleryBackbtn);
+        TitleText = (TextView)findViewById(R.id.galleryTitleText);
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        TitleText.setText("Gallery");
 
+        Intent intent = getIntent();
         String imgUrl = "";
 
         if(intent != null){
@@ -43,19 +52,5 @@ public class ImageViewerActivity extends AppCompatActivity {
                 .load(imgUrl)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(imageView);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId())
-        {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

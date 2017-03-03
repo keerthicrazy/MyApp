@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -30,27 +32,36 @@ public class GalleryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.gallery,container,false);
+        View view = inflater.inflate(R.layout.gallery, container, false);
         galleryArrayList = new ArrayList<Gallery>();
-        recyclerView = (RecyclerView)view.findViewById(R.id.gallery_recycler_view);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
+        recyclerView = (RecyclerView) view.findViewById(R.id.gallery_recycler_view);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(layoutManager);
         getImages = new GetImages(getActivity());
         galleryArrayList = getImages.getImages();
-        customGalleryAdapter = new CustomGalleryAdapter(galleryArrayList,getActivity(),adapterInterface);
+        customGalleryAdapter = new CustomGalleryAdapter(galleryArrayList, getActivity(), adapterInterface);
         recyclerView.setAdapter(customGalleryAdapter);
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     CustomGalleryAdapter.AdapterInterface adapterInterface = new CustomGalleryAdapter.AdapterInterface() {
         @Override
-        public void fetchData(View view,int position) {
+        public void fetchData(View view, int position) {
             Gallery gallery = galleryArrayList.get(position);
             Intent intent = new Intent(view.getContext(), ImageViewerActivity.class);
-            intent.putExtra("imgUrl",gallery.getImageUrl());
+            intent.putExtra("imgUrl", gallery.getImageUrl());
             startActivity(intent);
         }
     };
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+    }
 }
