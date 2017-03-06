@@ -72,9 +72,8 @@ public class LoginActivity extends AppCompatActivity implements
         setContentView(R.layout.login_activity);
         this.setTitle(R.string.loginbtn);
 
-        startActivity(new Intent(this,HomeActivity.class));
 
-      /*  firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth=FirebaseAuth.getInstance();
         progressDialog=new ProgressDialog(this);
 
 
@@ -97,7 +96,7 @@ public class LoginActivity extends AppCompatActivity implements
                 .enableAutoManage(this,this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-*/
+
         validation=new Validation();
         loginBtn=(Button)findViewById(R.id.loginbtn);
         newA=(TextView)findViewById(R.id.new_account);

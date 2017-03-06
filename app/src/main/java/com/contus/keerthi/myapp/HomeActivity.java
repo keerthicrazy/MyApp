@@ -84,7 +84,7 @@ public class HomeActivity extends AppCompatActivity
     private void setUserDetails()
     {
         FirebaseUser mUser = mFirebaseAuth.getCurrentUser();
-        tv_userName.setText(mUser.getDisplayName());
+         tv_userName.setText(mUser.getDisplayName());
         tv_userEmail.setText(mUser.getEmail());
         Glide.with(this).load(mUser.getPhotoUrl()).into(iv_userimage);
     }

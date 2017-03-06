@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import com.contus.keerthi.myapp.Custom.CustomNewsAdapter.AdapterInterface;
 
 /**
- * Created by user on 20/2/17.
+ * Created by Keerthivasan on 20/2/17.
  */
 
 public class FetchNews extends Fragment implements SearchView.OnQueryTextListener {
