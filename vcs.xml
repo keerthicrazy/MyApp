@@ -6,6 +6,10 @@
           <option name="url" value="https://github.com/Saiprashanth-1993/RecyclerViewGridGlide" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://KeerthivasanV_Contus@bitbucket.org/Apptha/p105-carpooling-and.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="$USER_HOME$/AndroidStudioProjects" />
