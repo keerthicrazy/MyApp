@@ -1,0 +1,13 @@
+<application>
+  <component name="SonarLintGlobalSettings">
+    <option name="sonarQubeServers">
+      <list>
+        <SonarQubeServer>
+          <option name="hostUrl" value="http://sonar.contus.us:9000" />
+          <token>df9fdf9ddf99df99dfccdfcbdf9ddf9edf9adf99dfcbdf9ddf9cdfcbdf9bdf9ddf9fdf9ddf9ddf93dfcfdfc8dfcedfcedfc9df93dfc9df98dfccdfcedf93dfcbdfcbdf93dfccdfcfdf98dfcedfcedfcb</token>
+          <option name="name" value="Contus Sonar" />
+        </SonarQubeServer>
+      </list>
+    </option>
+  </component>
+</application>
