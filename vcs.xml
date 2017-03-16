@@ -18,6 +18,10 @@
           <option name="url" value="https://github.com/devMandarkk/InstagramApiProject.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/tejas123/instagram-integration-android-application-tutorial.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="$USER_HOME$/AndroidStudioProjects" />
