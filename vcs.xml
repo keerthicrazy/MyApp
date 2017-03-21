@@ -30,6 +30,10 @@
           <option name="url" value="https://KeerthivasanV_Contus@bitbucket.org/Apptha/svep4154-jcb-android-mirash.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/greenrobot/greenDAO.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="$USER_HOME$/AndroidStudioProjects" />
